@@ -27,9 +27,18 @@ namespace DotNetCoreSqlDb
             // Add framework services.
             services.AddMvc();
 
-            services.AddDbContext<MyDatabaseContext>(options =>
-                    options.UseSqlite("Data Source=localdatabase.db"));
-        }
+			try
+			{
+				services.AddDbContext<MyDatabaseContext>(options =>
+						options.UseSqlServer(Configuration.GetConnectionString("mojeDB")));
+
+				services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
+			}
+			catch (Exception ex)
+			{
+
+			}
+		}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
