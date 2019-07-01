@@ -15,7 +15,7 @@ namespace DotNetCoreSqlDb.Controllers
         [HttpGet]
         public string Get()
         {
-            return "Version 1 from " + System.Environment.MachineName;
+            return "Version 2 from " + System.Environment.MachineName;
         }
 		        
     }
