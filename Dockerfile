@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.1 AS base
+ARG BASE_IMAGE=mcr.microsoft.com/dotnet/core/aspnet:2.1
+FROM ${BASE_IMAGE}
 WORKDIR /app
 EXPOSE 80
 
